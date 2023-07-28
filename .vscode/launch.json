@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "name": "repl",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "clox.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "console": "externalTerminal",
+      "preLaunchTask": "C/C++: cl.exe build active file"
+    },
+    {
+      "name": "run file",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "clox.exe",
+      "args": ["test.lox"],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "console": "externalTerminal",
+      "preLaunchTask": "C/C++: cl.exe build active file"
+    },
+  ],
+  "version": "2.0.0"
+}
