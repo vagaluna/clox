@@ -53,12 +53,17 @@ static void defineNative(const char* name, NativeFn function) {
 }
 
 void initVM() {
-    resetStack();
-    vm.objects = NULL;
-    initTable(&vm.globals);
-    initTable(&vm.strings);
+  resetStack();
+  vm.objects = NULL;
 
-    defineNative("clock", clockNative);
+  vm.grayCount = 0;
+  vm.grayCapacity = 0;
+  vm.grayStack = NULL;
+
+  initTable(&vm.globals);
+  initTable(&vm.strings);
+
+  defineNative("clock", clockNative);
 }
 
 void freeVM() {
