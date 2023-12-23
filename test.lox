@@ -1,9 +1,8 @@
-var x = "global";
-fun outer() {
-  var x = "outer";
-  fun inner() {
-    print x;
+class Scone {
+  topping(first, second) {
+    print "scone with " + first + " and " + second;
   }
-  inner();
 }
-outer();
+
+var scone = Scone();
+scone.topping("berries", "cream");

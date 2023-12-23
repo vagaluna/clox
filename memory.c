@@ -57,6 +57,12 @@ void markValue(Value value) {
   if (IS_OBJ(value)) markObject(AS_OBJ(value));
 }
 
+static void markArray(ValueArray* array) {
+  for (int i = 0; i < array->count; i++) {
+    markValue(array->values[i]);
+  }
+}
+
 static void blackenObject(Obj* object) {
 #ifdef DEBUG_LOG_GC
   printf("%p blacken ", (void*)object);
@@ -102,12 +108,6 @@ static void blackenObject(Obj* object) {
     case OBJ_NATIVE:
     case OBJ_STRING:
       break;
-  }
-}
-
-static void markArray(ValueArray* array) {
-  for (int i = 0; i < array->count; i++) {
-    markValue(array->values[i]);
   }
 }
 
