@@ -3,7 +3,8 @@
     "stdlib.h": "c",
     "stdio.h": "c",
     "debug.h": "c",
-    "scanner.h": "c"
+    "scanner.h": "c",
+    "common.h": "c"
   },
   "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
   "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine"
