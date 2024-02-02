@@ -660,6 +660,13 @@ static void synchronize() {
 	}
 }
 
+static Token syntheticToken(const char* text) {
+  Token token;
+  token.start = text;
+  token.length = (int)strlen(text);
+  return token;
+}
+
 static void namedVariable(Token name, bool canAssign) {
 	uint8_t getOp, setOp;
 	int arg = resolveLocal(current, &name);
@@ -681,6 +688,10 @@ static void namedVariable(Token name, bool canAssign) {
 	} else {
 		emitBytes(getOp, (uint8_t)arg);
 	}
+}
+
+static void variable(bool canAssign) {
+	namedVariable(parser.previous, canAssign);
 }
 
 static void classDeclaration() {
@@ -789,17 +800,6 @@ static void string(bool canAssign) {
 		parser.previous.start + 1,
 		parser.previous.length - 2
 	)));
-}
-
-static void variable(bool canAssign) {
-	namedVariable(parser.previous, canAssign);
-}
-
-static Token syntheticToken(const char* text) {
-  Token token;
-  token.start = text;
-  token.length = (int)strlen(text);
-  return token;
 }
 
 static void super_(bool canAssign) {
